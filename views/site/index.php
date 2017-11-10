@@ -1,51 +1,80 @@
 <?php
 
+use yii\grid\GridView;
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
+
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+
+$this->title = 'Dashboard NTB';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+        <h1>DASHBOARD INFORMASI TERINTEGRASI</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead">Layanan Informasi Pembangunan Pemerintah Provinsi NTB  </p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div>
 
     <div class="body-content">
 
         <div class="row">
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2>Informasi Sistem Satu</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+                <p>Percobaan Satu</p>
+                <?= GridView::widget([
+                'dataProvider'=> $dataPresensi,
+                'formatter'=>['class'=>'yii\i18n\Formatter' ,'nullDisplay'=>'Nihil'],
+                //'options'=>['style'=>'width : 50%'],
+                'columns'=> [
+                    ['class'=>'yii\grid\SerialColumn','contentOptions'=>['style'=>'width :7%']],
+                    ['attribute'=>'id', 'contentOptions'=>['style'=>'width: 10%']],
+                    ['attribute'=>'userid', 'contentOptions'=>['style'=>'width: 10%']],
+                    ['attribute'=>'checktime', 'contentOptions'=>['style'=>'width: 10%']],
+                ]
+                ])
+                ?> 
+                
             </div>
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2>Informasi Sistem Dua</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+                <p>Percobaan Dua</p>
+                <div class="form">
+                    <?php $form2 = ActiveForm::begin([
+                            'action' => ['index'],
+                            'method' => 'get',
+                    ]); ?>
+                    <?= $form2->field($model2, 'tgl'); ?>
+                    <?= $form2->field($model2, 'deptid'); ?>
+                    
+                    <div class="form-group">
+                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+                    </div>
+                    <?php ActiveForm::end(); ?>
+                </div>
+                
+                <?= GridView::widget([
+                'dataProvider'=> $dataAbsensi,
+                'formatter'=>['class'=>'yii\i18n\Formatter' ,'nullDisplay'=>'Nihil'],
+                //'options'=>['style'=>'width : 50%'],
+                'columns'=> [
+                    ['class'=>'yii\grid\SerialColumn','contentOptions'=>['style'=>'width :7%']],
+                    ['attribute'=>'userid', 'contentOptions'=>['style'=>'width: 10%']],
+                    ['attribute'=>'name', 'contentOptions'=>['style'=>'width: 10%']],
+                    ['attribute'=>'Datang', 'contentOptions'=>['style'=>'width: 10%']],
+                    ['attribute'=>'Pulang', 'contentOptions'=>['style'=>'width: 10%']]
+                ]
+                ])
+                ?> 
             </div>
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2>Informasi Sistem Tiga</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                <p>Percobaan Tiga</p>
             </div>
         </div>
 

@@ -1,0 +1,77 @@
+/*
+//========Contoh perintah baca data ke format JSON:
+$result=dbExecute(
+	$dbdriver='mysqli',
+	$hostname='localhost',
+	$username='user',
+	$password='password',
+	$dbname='dbName',
+	$sql='SELECT * FROM tbName WHERE name=?',
+	$bindfield=array('name'=>$name),
+	$trx=false
+);
+if(is_string($result)){
+	echo $result;
+}
+else{
+	$data=$result->getRows();
+	if(count($data)>0) echo serialize($data);
+}
+
+//========Contoh perintah tambah data:
+$result=dbInsert(
+	$dbdriver='mysqli',
+	$hostname='localhost',
+	$username='user',
+	$password='password',
+	$dbname='dbName',
+	$tbname='tbName',
+	$bindfield=array('name'=>'myname')
+);
+if(is_string($result)){
+	echo $result;
+}
+
+else{
+	$data=$result->getRows();
+	if(count($data)>0) echo serialize($data);
+}
+
+//========Contoh perintah ubah data:
+$result=dbUpdate(
+	$dbdriver='mysqli',
+	$hostname='localhost',
+	$username='user',
+	$password='password',
+	$dbname='dbName',
+	$tbname='tbName',
+	$bindfield=array('name'=>'myname'),
+	$where='id=1'
+);
+if(is_string($result)){
+	echo $result;
+}
+else{
+	$data=$result->getRows();
+	if(count($data)>0) echo serialize($data);
+}
+
+//========Contoh perintah hapus data:
+$result=dbDelete(
+	$dbdriver='mysqli',
+	$hostname='localhost',
+	$username='user',
+	$password='password',
+	$dbname='dbName',
+	$tbname='tbName',
+	$where='id=1'
+);
+if(is_string($result)){
+	echo $result;
+}
+else{
+	$data=$result->getRows();
+	if(count($data)>0) echo serialize($data);
+}
+
+*/
