@@ -1,7 +1,5 @@
 <?php
 
-use yii\grid\GridView;
-use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -22,59 +20,31 @@ $this->title = 'Dashboard NTB';
 
         <div class="row">
             <div class="col-lg-4">
-                <h2>Informasi Sistem Satu</h2>
-
-                <p>Percobaan Satu</p>
-                <?= GridView::widget([
-                'dataProvider'=> $dataPresensi,
-                'formatter'=>['class'=>'yii\i18n\Formatter' ,'nullDisplay'=>'Nihil'],
-                //'options'=>['style'=>'width : 50%'],
-                'columns'=> [
-                    ['class'=>'yii\grid\SerialColumn','contentOptions'=>['style'=>'width :7%']],
-                    ['attribute'=>'id', 'contentOptions'=>['style'=>'width: 10%']],
-                    ['attribute'=>'userid', 'contentOptions'=>['style'=>'width: 10%']],
-                    ['attribute'=>'checktime', 'contentOptions'=>['style'=>'width: 10%']],
-                ]
-                ])
-                ?> 
+                <h3>DINAS KOMUNIKASI INFORMATIKA DAN STATISTIK</h3>
+                <p><?= Html::a('Sistem Informasi Presensi Terintegrasi', ['kominfotik/sisensi']); ?></p>
                 
             </div>
             <div class="col-lg-4">
-                <h2>Informasi Sistem Dua</h2>
-
-                <p>Percobaan Dua</p>
-                <div class="form">
-                    <?php $form2 = ActiveForm::begin([
-                            'action' => ['index'],
-                            'method' => 'get',
-                    ]); ?>
-                    <?= $form2->field($model2, 'tgl'); ?>
-                    <?= $form2->field($model2, 'deptid'); ?>
-                    
-                    <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
-                    </div>
-                    <?php ActiveForm::end(); ?>
-                </div>
-                
-                <?= GridView::widget([
-                'dataProvider'=> $dataAbsensi,
-                'formatter'=>['class'=>'yii\i18n\Formatter' ,'nullDisplay'=>'Nihil'],
-                //'options'=>['style'=>'width : 50%'],
-                'columns'=> [
-                    ['class'=>'yii\grid\SerialColumn','contentOptions'=>['style'=>'width :7%']],
-                    ['attribute'=>'userid', 'contentOptions'=>['style'=>'width: 10%']],
-                    ['attribute'=>'name', 'contentOptions'=>['style'=>'width: 10%']],
-                    ['attribute'=>'Datang', 'contentOptions'=>['style'=>'width: 10%']],
-                    ['attribute'=>'Pulang', 'contentOptions'=>['style'=>'width: 10%']]
-                ]
-                ])
-                ?> 
+                <h3>BADAN PENGELOLA KEUANGAN DAN ASET DAERAH</h3>
+                <p><?= Html::a('Isi Program Perangkat Daerah', ['bpkad/set-program']) ?></p>
+                 
             </div>
             <div class="col-lg-4">
-                <h2>Informasi Sistem Tiga</h2>
+                <h3>BADAN PERENCANAAN PEMBANGUNAN DAN PENELITIAN DAERAH</h3>
 
                 <p>Percobaan Tiga</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4">
+                <h3>BADAN PENGELOLAAN PENDAPATAN DAERAH</h3>
+            </div>
+            <div class="col-lg-4">
+                <h3>BADAN PENANAMAN MODAN DAN PERIJINAN TERPADU SATU PINTU</h3>
+            </div>
+            <div class="col-lg-4">
+                <h3>BIRO ORGANISASI</h3>
             </div>
         </div>
 

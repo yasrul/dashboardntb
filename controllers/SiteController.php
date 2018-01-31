@@ -7,8 +7,6 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use yii\data\ArrayDataProvider;
-use yii\base\DynamicModel;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Adapter;
@@ -64,65 +62,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        //Web API presensi_online
-        $adapter1 = new Adapter();
-        $url='http://simantra.ntbprov.go.id/mantra/json/diskominfotik_ntbprov/presensi_online/';
-	$method='presensi_harian';
-	$accesskey='ecvg645gep';
-	$request=isset($_POST["par"])?$_POST["par"]:array();
-
-	$table =$adapter1->callAPI (
-		$endpoint=$url,
-		$operation=$method,
-		$accesskey,
-		$parameter=$request,
-		$callmethod='REST' // call option: GET, POST, REST, RESTFULL, RESTFULLPAR
-	);
-	if(isset($table['response']['data'][$method])) {
-            
-        }
-        $dataProvider1 = new ArrayDataProvider([
-            'allModels' => $table['response']['data'][$method],
-            'pagination'=> [
-                'pageSize'=>20,
-            ],
-        ]);
-        
-        //Create dinamic model
-        $model2 = new DynamicModel(['tgl','deptid']);
-        $model2->addRule(['tgl','deptid'], 'required' )
-                ->addRule(['tgl'], 'date')
-                ->addRule(['deptid'], 'integer');
-        
-        $model2->load(Yii::$app->request->queryParams);
-        
-        //Web API absensi_online
-        $adapter2 = new Adapter();
-        $url='http://simantra.ntbprov.go.id/mantra/json/diskominfotik_ntbprov/presensi_online/';
-        $method='absen_harian';
-        $accesskey='5otjjv8g18';
-        //$request=isset($_POST["par"])?$_POST["par"]:array();
-        $request=isset($model2)?$model2:array();
-
-        $table =$adapter1->callAPI (
-            $endpoint=$url,
-            $operation=$method,
-            $accesskey,
-            $parameter=$request,
-            $callmethod='REST' // call option: GET, POST, REST, RESTFULL, RESTFULLPAR
-        );
-        
-        $dataProvider2 = new ArrayDataProvider([
-            'allModels' => $table['response']['data'][$method],
-            'pagination'=> [
-                'pageSize'=>20,
-            ],
-        ]);
-        return $this->render('index', [
-            'dataPresensi' => $dataProvider1,
-            'dataAbsensi' => $dataProvider2,
-            'model2' => $model2,
-        ]);
+        return $this->render('index');
                
     }
 
